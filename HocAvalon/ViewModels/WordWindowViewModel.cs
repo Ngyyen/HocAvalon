@@ -20,6 +20,10 @@ namespace HocAvalon.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition> { };
+
+        //[ObservableProperty]
+        //public Dictionary<string, ObservableCollection<Def2ex>> definitions = new Dictionary<string, ObservableCollection<Def2ex>>();
+
         public WordWindowViewModel() 
 		{
             string input = ConvertString(ShareData.transText);
@@ -43,6 +47,12 @@ namespace HocAvalon.ViewModels
                     Definition item = new Definition();
                     item.PartOfSpeech = meaning["partOfSpeech"].ToString();
 
+/*                    string partOfSpeech = meaning["partOfSpeech"].ToString();
+                    if (!Definitions.ContainsKey(partOfSpeech))
+                    {
+                        Definitions[partOfSpeech] = new ObservableCollection<Def2ex>();
+                    }*/
+
                     JToken definitions = meaning["definitions"];
                     foreach (JToken definition in definitions)
                     {
@@ -50,13 +60,15 @@ namespace HocAvalon.ViewModels
                         def2ex.Meaning = "Definition: " + definition["definition"].ToString();
                         if (definition["example"] != null)
                         {
-                            def2ex.Example = "Example: " + definition["example"].ToString();
+                            def2ex.Example = "Example: " + definition["example"].ToString() +"\n";
+                            def2ex.IsHasExample = true;
                         }
                         else
                         {
                             def2ex.Example = "Example: " + "nan";
                         }
                         item.Def2exs.Add(def2ex);
+                        //Definitions[partOfSpeech].Add(def2ex);
                     }
                     Definitions.Add(item);
                 }

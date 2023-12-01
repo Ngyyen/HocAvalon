@@ -16,13 +16,14 @@ namespace HocAvalon.Model
             Example = example;
         }
 
-        public string Meaning { get; set; } = string.Empty;
+        public string Meaning { get; set; } = String.Empty;
         public string Example { get; set; } = String.Empty;
+        public bool IsHasExample { get; set; } = false;
     }
     public class Definition
     {
         public string PartOfSpeech {  get; set; } = String.Empty;
-        //public Dictionary<string, string> Def2ex { get; set; } = new Dictionary<string, string>();
+        //public Dictionary<string, string> Def2exs { get; set; } = new Dictionary<string, string>();
         public ObservableCollection<Def2ex> Def2exs { get; set; } = new ObservableCollection<Def2ex>(); 
     }
 }

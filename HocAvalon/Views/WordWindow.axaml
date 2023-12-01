@@ -21,13 +21,23 @@
 							<CheckBox Margin="4"
 									  Content="{Binding PartOfSpeech}"/>
 							<ItemsControl ItemsSource="{Binding Def2exs}">
+								<ItemsControl.Styles>
+									<Style Selector="SelectableTextBlock.class1">
+										<Setter Property="Height" Value="0" />
+									</Style>
+									<Style Selector="SelectableTextBlock.class2">
+										<Setter Property="Height" Value="25" />
+									</Style>
+								</ItemsControl.Styles>
 								<ItemsControl.ItemTemplate>
 									<DataTemplate>
 										<StackPanel>
-											<SelectableTextBlock Margin="4"
-													 Text="{Binding Meaning}"/>
-											<SelectableTextBlock Margin="4" 
-													 Text="{Binding Example}"/>
+											<SelectableTextBlock Margin="4" TextWrapping="Wrap"
+																 Text="{Binding Meaning}"/>
+											<SelectableTextBlock Classes.class1="{Binding !IsHasExample}"
+																 Classes.class2="{Binding IsHasExample}"
+																 Margin="4" TextWrapping="Wrap"
+																 Text="{Binding Example}"/>
 										</StackPanel>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>

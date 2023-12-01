@@ -19,7 +19,7 @@ namespace HocAvalon
 namespace HocAvalon.Views
 {
     public partial class Window1 : Window
-    {   
+    {
         // Khởi tạo các biến hook và giả lập sự kiện
         TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
         EventSimulator simulator = new EventSimulator();
@@ -37,8 +37,8 @@ namespace HocAvalon.Views
             Dispatcher.UIThread.Post( async () =>
             {
                 // lấy giá trị hiện tại của Clipboard để khi xử lý xong sẽ trả lại
-                string temp = await Clipboard.GetTextAsync();
-                await Clipboard.ClearAsync();
+                // string temp = await Clipboard.GetTextAsync();
+                // await Clipboard.ClearAsync();
 
                 await Task.Delay(75);
                 // Press Ctrl+C
@@ -51,10 +51,11 @@ namespace HocAvalon.Views
 
                 // Lấy giá trị text đang có trong Clipboard
                 string text = await Clipboard.GetTextAsync();
+
                 // Nếu text ko có giá trị hoặc trùng giá trị trước đó thì ko làm gì
                 if (text is null || text == " " || text == currentText)
-                {                   
-                    await Clipboard.SetTextAsync(temp);
+                {
+                    //await Clipboard.SetTextAsync(temp);
                     return;
                 }
                 currentText = text;
@@ -65,13 +66,11 @@ namespace HocAvalon.Views
                 mainWindow.Position = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
                 mainWindow.WindowStartupLocation = WindowStartupLocation.Manual;
                 mainWindow.Show();
-
-                await Clipboard.SetTextAsync(temp);
             });
         }
         private void Window_Closed(object? sender, System.EventArgs e)
         {
-            hook.Dispose();
+            hook.Dispose();           
         }
     }
 }
