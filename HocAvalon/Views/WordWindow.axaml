@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HocAvalon.Views.WordWindow"
+        Title="WordWindow"
+		Width="600"
+		Height="300"
+		WindowStartupLocation="CenterScreen"
+		Deactivated="Window_Deactivated">
+	<ScrollViewer>
+		<StackPanel>
+			<!--<TextBox x:Name="transBox" TextWrapping="Wrap" Text="{Binding Output}"/>-->
+			<TextBlock Text="{Binding Word}"/>
+			<TextBlock Text="{Binding Sound}"/>
+			<ItemsControl ItemsSource="{Binding Definitions}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<CheckBox Margin="4"
+									  Content="{Binding PartOfSpeech}"/>
+							<ItemsControl ItemsSource="{Binding Def2exs}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel>
+											<SelectableTextBlock Margin="4"
+													 Text="{Binding Meaning}"/>
+											<SelectableTextBlock Margin="4" 
+													 Text="{Binding Example}"/>
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</StackPanel>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+	</ScrollViewer>
+</Window>

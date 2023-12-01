@@ -1,0 +1,22 @@
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:HocAvalon.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:HocAvalon.Views"
+        mc:Ignorable="d" d:DesignWidth="145" d:DesignHeight="35"
+		Width="145"
+	    Height="35"
+        x:Class="HocAvalon.Views.MainWindow"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="NoChrome"
+		ExtendClientAreaTitleBarHeightHint="-1"	
+		CanResize="True"
+		Deactivated="Window_Deactivated">	
+	<Grid ColumnDefinitions="*,*">
+		<Button Click="Button_Click" Width="70" Grid.Column="0" Content="Trans" Padding="9"/>
+		<Button Click="SumButtonClick" Width="70" Grid.Column="1" Content="Suma" Padding="9"/>
+	</Grid>
+</Window>
+
