@@ -9,6 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Threading.Tasks;
 using System.Text.Json.Nodes;
 using Avalonia.Controls.ApplicationLifetimes;
+using LibVLCSharp.Shared;
 
 namespace HocAvalon.Views
 {

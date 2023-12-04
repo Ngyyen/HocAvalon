@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using HocAvalon.Model;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
+using LibVLCSharp.Shared;
+using System.Security.Policy;
+using LibVLCSharp.Avalonia;
 
 namespace HocAvalon.ViewModels
 {
@@ -88,6 +92,15 @@ namespace HocAvalon.ViewModels
         {
             string convertInput = input.Replace(System.Environment.NewLine, "");
             return convertInput;
+        }
+
+        [RelayCommand]
+        public void AudioPlay()
+        {
+            var libvlc = new LibVLC(enableDebugLogs: true);
+            var media = new Media(libvlc, new Uri(Sound));
+            var mediaplayer = new MediaPlayer(media);
+            mediaplayer.Play();
         }
     }
 }

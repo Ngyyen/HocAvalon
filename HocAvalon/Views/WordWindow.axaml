@@ -14,6 +14,7 @@
 			<!--<TextBox x:Name="transBox" TextWrapping="Wrap" Text="{Binding Output}"/>-->
 			<TextBlock Text="{Binding Word}"/>
 			<TextBlock Text="{Binding Sound}"/>
+			<Button Content="Audio" Command="{Binding AudioPlayCommand}"/>
 			<ItemsControl ItemsSource="{Binding Definitions}">
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
