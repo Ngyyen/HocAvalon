@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HocAvalon", "HocAvalon\HocA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HocAvalon.Desktop", "HocAvalon.Desktop\HocAvalon.Desktop.csproj", "{D227116C-BFA7-400E-A765-BA4F04A4D2C5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaApplication1", "AvaloniaApplication1\AvaloniaApplication1.csproj", "{B989E9A8-9AA8-45B9-A981-65A4F9BFC75E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaApplication1.Desktop", "AvaloniaApplication1.Desktop\AvaloniaApplication1.Desktop.csproj", "{6F482581-1F6D-4E62-BA78-DA135C5C1C77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D227116C-BFA7-400E-A765-BA4F04A4D2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D227116C-BFA7-400E-A765-BA4F04A4D2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D227116C-BFA7-400E-A765-BA4F04A4D2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B989E9A8-9AA8-45B9-A981-65A4F9BFC75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B989E9A8-9AA8-45B9-A981-65A4F9BFC75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B989E9A8-9AA8-45B9-A981-65A4F9BFC75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B989E9A8-9AA8-45B9-A981-65A4F9BFC75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F482581-1F6D-4E62-BA78-DA135C5C1C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F482581-1F6D-4E62-BA78-DA135C5C1C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F482581-1F6D-4E62-BA78-DA135C5C1C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F482581-1F6D-4E62-BA78-DA135C5C1C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

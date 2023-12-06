@@ -1,19 +1,16 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:AvaloniaApplication1.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-		Width="300"
-		Height="200"
-        x:Class="HocAvalon.Views.Window1"
-        Title="Window1"
-		WindowStartupLocation="CenterScreen"
-		Closed="Window_Closed"
-		Background="Blue">
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1">
 	<Grid>
-		<SelectableTextBlock Text="Startup Window"/>
-		<ComboBox ItemsSource="{Binding MyList}" SelectedIndex="0">
+		<ComboBox ItemsSource="{Binding MyList}" SelectedIndex="{Binding MyIndex}">
+			
 		</ComboBox>
-	
 	</Grid>
 </Window>

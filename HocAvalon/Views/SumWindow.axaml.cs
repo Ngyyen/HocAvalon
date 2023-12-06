@@ -20,7 +20,7 @@ namespace HocAvalon.Views
         {
             InitializeComponent();
             httpClient = new HttpClient();
-            string input = ConvertString(ShareData.transText);
+            string input = ConvertString(ShareData.transText);           
             sumBox.Text = SummarizeText(input);
         }
 

@@ -1,10 +1,13 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Media;
 using Avalonia.Threading;
 using HocAvalon.ViewModels;
 using SharpHook;
 using SharpHook.Native;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace HocAvalon
 {

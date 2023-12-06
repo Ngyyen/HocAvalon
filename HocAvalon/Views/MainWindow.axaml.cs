@@ -23,6 +23,7 @@ public partial class MainWindow : Window
             Window2 window2 = new Window2();
             window2.Show();
         }
+        Task.Delay(25);
         this.Close();
     }
     private void SumButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

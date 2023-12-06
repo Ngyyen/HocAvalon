@@ -17,10 +17,13 @@ namespace HocAvalon.ViewModels
         private HttpClient httpClient = new HttpClient();
 
         [ObservableProperty]
+        public string word = "empty";
+
+        [ObservableProperty]
         public string sound = "default";
 
         [ObservableProperty]
-        public string word = "empty";
+        public string phonetic = "muted";
 
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition> { };
@@ -43,12 +46,31 @@ namespace HocAvalon.ViewModels
             string rawResult = jsonArray.ToString();
             foreach (JToken entry in jsonArray)
             {
+                // lay word
                 Word = entry["word"].ToString();
-
+                // lay cach doc
+                if (entry["phonetic"] != null)
+                {
+                    Phonetic = entry["phonetic"].ToString();
+                }
+                // lay file audio
+                JToken phonetics = entry["phonetics"];
+                foreach (JToken phonetic in phonetics)
+                {
+                    if (phonetic["audio"].ToString() != "")
+                    {
+                        Sound = phonetic["audio"].ToString();
+                        break;
+                    }
+                }
+                // lay phan dich nghia va dong nghia, trai nghia
                 JToken meanings = entry["meanings"];
                 foreach (JToken meaning in meanings)
                 {
+                    // mỗi item là 1 loại từ
                     Definition item = new Definition();
+
+                    // lấy loại từ
                     item.PartOfSpeech = meaning["partOfSpeech"].ToString();
 
 /*                    string partOfSpeech = meaning["partOfSpeech"].ToString();
@@ -56,7 +78,8 @@ namespace HocAvalon.ViewModels
                     {
                         Definitions[partOfSpeech] = new ObservableCollection<Def2ex>();
                     }*/
-
+                    
+                    // lấy danh sách các định nghĩa và ví dụ
                     JToken definitions = meaning["definitions"];
                     foreach (JToken definition in definitions)
                     {
@@ -74,24 +97,24 @@ namespace HocAvalon.ViewModels
                         item.Def2exs.Add(def2ex);
                         //Definitions[partOfSpeech].Add(def2ex);
                     }
+
+                    // lấy từ đồng nghĩa và trái nghĩa
+                    JToken synonyms = meaning["synonyms"];                   
+                    foreach (JToken synonym in synonyms)
+                    {
+                        item.IsHasSynonym = true;
+                        item.Synonyms.Add(synonym.ToString());
+                    }
+                    JToken antonyms = meaning["antonyms"];
+                    foreach (JToken antonym in antonyms)
+                    {
+                        item.IsHasAntonym = true;
+                        item.Antonyms.Add(antonym.ToString());
+                    }
+
                     Definitions.Add(item);
                 }
-
-                JToken phonetics = entry["phonetics"];
-                foreach (JToken phonetic in phonetics)
-                {
-                    if (phonetic["audio"].ToString() != "")
-                    {
-                        Sound = phonetic["audio"].ToString();
-                        break;
-                    }
-                }
             }
-        }
-        string ConvertString(string input)
-        {
-            string convertInput = input.Replace(System.Environment.NewLine, "");
-            return convertInput;
         }
 
         [RelayCommand]
@@ -101,6 +124,11 @@ namespace HocAvalon.ViewModels
             var media = new Media(libvlc, new Uri(Sound));
             var mediaplayer = new MediaPlayer(media);
             mediaplayer.Play();
+        }
+        string ConvertString(string input)
+        {
+            string convertInput = input.Replace(System.Environment.NewLine, "");
+            return convertInput;
         }
     }
 }

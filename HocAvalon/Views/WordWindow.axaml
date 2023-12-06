@@ -13,14 +13,32 @@
 		<StackPanel>
 			<!--<TextBox x:Name="transBox" TextWrapping="Wrap" Text="{Binding Output}"/>-->
 			<TextBlock Text="{Binding Word}"/>
+			<TextBlock Text="{Binding Phonetic}"/>
 			<TextBlock Text="{Binding Sound}"/>
 			<Button Content="Audio" Command="{Binding AudioPlayCommand}"/>
 			<ItemsControl ItemsSource="{Binding Definitions}">
+				<ItemsControl.Styles>
+					<Style Selector="TextBlock.class1">
+						<Setter Property="Height" Value="0" />
+					</Style>
+					<Style Selector="TextBlock.class2">
+						<Setter Property="Height" Value="20"/>
+						<Setter Property="Margin" Value="10"/>
+					</Style>
+					<Style Selector="TextBlock.class3">
+						<Setter Property="Height" Value="0" />
+					</Style>
+					<Style Selector="TextBlock.class4">
+						<Setter Property="Height" Value="20" />
+						<Setter Property="Margin" Value="10"/>
+					</Style>
+				</ItemsControl.Styles>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
 						<StackPanel>
 							<CheckBox Margin="4"
 									  Content="{Binding PartOfSpeech}"/>
+							
 							<ItemsControl ItemsSource="{Binding Def2exs}">
 								<ItemsControl.Styles>
 									<Style Selector="SelectableTextBlock.class1">
@@ -39,6 +57,34 @@
 																 Classes.class2="{Binding IsHasExample}"
 																 Margin="4" TextWrapping="Wrap"
 																 Text="{Binding Example}"/>
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>				
+							
+							<TextBlock Text="Synonyms" FontWeight="Bold"
+									   Classes.class1="{Binding !IsHasSynonym}"
+									   Classes.class2="{Binding IsHasSynonym}"/>
+							<ItemsControl ItemsSource="{Binding Synonyms}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel>
+											<SelectableTextBlock FontWeight="Bold"
+																 Text="{Binding}"/>
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>						
+							
+							<TextBlock Text="Antonyms" FontWeight="Bold"
+									   Classes.class3="{Binding !IsHasAntonym}"
+									   Classes.class4="{Binding IsHasAntonym}"/>
+							<ItemsControl ItemsSource="{Binding Antonyms}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel>
+											<SelectableTextBlock FontWeight="Bold"
+																 Text="{Binding}"/>											
 										</StackPanel>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>
