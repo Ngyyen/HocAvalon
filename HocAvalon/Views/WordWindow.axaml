@@ -15,7 +15,8 @@
 			<TextBlock Text="{Binding Word}"/>
 			<TextBlock Text="{Binding Phonetic}"/>
 			<TextBlock Text="{Binding Sound}"/>
-			<Button Content="Audio" Command="{Binding AudioPlayCommand}"/>
+			<Button Content="Audio" Command="{Binding AudioPlayCommand}"
+					IsEnabled="{Binding IsHasAudio}"/>
 			<Button Content="{Binding ButtonContent}" Command="{Binding AddRemoveWordCommand}"
 					Background="{Binding ButtonColor}"/>
 

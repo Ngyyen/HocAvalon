@@ -26,6 +26,9 @@ namespace HocAvalon.ViewModels
         public string buttonColor = "Blue";
 
         [ObservableProperty]
+        public bool isHasAudio = false;
+
+        [ObservableProperty]
         public string word = "empty";
 
         [ObservableProperty]
@@ -83,6 +86,7 @@ namespace HocAvalon.ViewModels
                     if (phonetic["audio"].ToString() != "")
                     {
                         Sound = phonetic["audio"].ToString();
+                        IsHasAudio = true;
                         break;
                     }
                 }
