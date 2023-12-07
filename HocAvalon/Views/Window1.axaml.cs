@@ -71,6 +71,11 @@ namespace HocAvalon.Views
                 mainWindow.Show();
             });
         }
+        private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            SavedWordWindow savedWordWindow = new SavedWordWindow();
+            savedWordWindow.Show();
+        }
         private void Window_Closed(object? sender, System.EventArgs e)
         {
             hook.Dispose();           

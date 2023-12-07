@@ -9,12 +9,21 @@ using CommunityToolkit.Mvvm.Input;
 using LibVLCSharp.Shared;
 using System.Security.Policy;
 using LibVLCSharp.Avalonia;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace HocAvalon.ViewModels
 {
 	public partial class WordWindowViewModel : ViewModelBase
 	{
         private HttpClient httpClient = new HttpClient();
+        public SavedWord findedWord = new SavedWord();
+
+        [ObservableProperty]
+        public string buttonContent = "Add";
+
+        [ObservableProperty]
+        public string buttonColor = "Blue";
 
         [ObservableProperty]
         public string word = "empty";
@@ -35,6 +44,20 @@ namespace HocAvalon.ViewModels
 		{
             string input = ConvertString(ShareData.transText);
             TranslateWord(input);
+            Task<List<SavedWord>> findedList = App.WordBookDatabase.GetaTask(input);
+            if (findedList.Result.Count>0)
+            {
+                findedWord = findedList.Result[0];
+                ButtonColor = "Red";
+                ButtonContent = "Remove";
+            }
+        }
+        public WordWindowViewModel(SavedWord selectedWord)
+        {
+            findedWord = selectedWord;
+            TranslateWord(selectedWord.Content);
+            ButtonContent = "Remove";
+            ButtonColor = "Red";
         }
         public void TranslateWord(string input)
         {
@@ -124,6 +147,26 @@ namespace HocAvalon.ViewModels
             var media = new Media(libvlc, new Uri(Sound));
             var mediaplayer = new MediaPlayer(media);
             mediaplayer.Play();
+        }
+
+        [RelayCommand]
+        public async void AddRemoveWord()
+        {
+            if (findedWord.Content == String.Empty)
+            {
+                SavedWord newWord = new SavedWord(Word);
+                var r = App.WordBookDatabase.SaveWordAsync(newWord);
+                findedWord = newWord;
+                ButtonContent = "Remove";
+                ButtonColor = "Red";
+            }
+            else
+            {
+                await App.WordBookDatabase.DeleteTask(findedWord);
+                findedWord.Content = String.Empty;
+                ButtonContent = "Add";
+                ButtonColor = "Blue";
+            }
         }
         string ConvertString(string input)
         {

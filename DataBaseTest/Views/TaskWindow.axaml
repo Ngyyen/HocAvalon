@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DataBaseTest.Views.TaskWindow"
+        Title="TaskWindow">
+	<StackPanel>
+		<Label Content="Task name:"/>
+		<TextBox Text="{Binding TaskName}"/>
+		<Label Content="Description:"/>
+		<TextBox Text="{Binding Description}"/>
+		<Button Content="Add" Command="{Binding AddTaskCommand}"/>
+		<Button Content="Clear" Command="{Binding ClearTaskCommand}"/>
+
+		<ItemsControl ItemsSource="{Binding TaskList}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<SelectableTextBlock Margin="4" TextWrapping="Wrap"
+											 Text="{Binding ID}"/>
+						<SelectableTextBlock Margin="4" TextWrapping="Wrap"
+											 Text="{Binding TaskName}"/>
+						<SelectableTextBlock Margin="4" TextWrapping="Wrap"
+											 Text="{Binding Description}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</StackPanel>
+</Window>

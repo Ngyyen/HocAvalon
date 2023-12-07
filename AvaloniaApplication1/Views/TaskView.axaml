@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication1.Views.TaskView"
+		xmlns:local="clr-namespace:AvaloniaApplication1.Views" 
+        Title="TaskView" Height="450" Width="800">
+	<Grid Background="#008080" Margin="0,-11,0,0">
+		<TextBlock Margin="10,10,10,0" Text="WPF" HorizontalAlignment="Center" FontSize="30" Foreground="Yellow" FontWeight="Bold"/>
+		<TextBlock Margin="0,50,0,0" Text="MVVM - SQLite: Write data to local database" HorizontalAlignment="Center" FontSize="30" Foreground="YellowGreen" FontWeight="Bold" Height="50" VerticalAlignment="Top"/>
+
+		<StackPanel Margin="30,130,30,0" d:LayoutOverrides="VerticalAlignment">
+			<TextBlock Text="Task Name:" Foreground="GreenYellow"/>
+			<TextBox Text="{Binding TaskName}" Height="32"/>
+		</StackPanel>
+
+		<StackPanel Margin="30,190,30,0" d:LayoutOverrides="VerticalAlignment">
+			<TextBlock Text="Description:" Foreground="GreenYellow"/>
+			<TextBox Text="{Binding Description}" Height="32"/>
+		</StackPanel>
+
+		<StackPanel Margin="30,250,30,0" d:LayoutOverrides="VerticalAlignment">
+			<TextBlock Text="DueDate:" Foreground="GreenYellow"/>
+			<!--<TextBox Text="{Binding DueDate , UpdateSourceTrigger=PropertyChanged}" Height="32"/>-->
+			<DatePicker x:Name="DueDate" SelectedDate="{Binding DueDate, Mode=TwoWay}" ></DatePicker>
+		</StackPanel>
+
+		<Button Content="Add task to database" Height="30" Command="{Binding AddTaskCommand}" HorizontalAlignment="Left" Margin="600,320,0,0" Name="cmdAddTask" VerticalAlignment="Top" Width="170" />
+		<DataGrid ItemsSource="{Binding TaskList}" Margin="30,363,30,23">
+			<DataGridTextColumn Header="Country ID" Binding="{Binding TaskName}"/>
+			<DataGridTextColumn Header="Country Name" Binding="{Binding Description}"/>
+			<DataGridTextColumn Header="Greeting" Binding="{Binding DueDate}"/>
+		</DataGrid>
+	</Grid>
+</Window>

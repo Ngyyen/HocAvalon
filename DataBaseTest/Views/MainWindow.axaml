@@ -1,17 +1,12 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DataBaseTest.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:DataBaseTest.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-		Width="300"
-		Height="200"
-        x:Class="HocAvalon.Views.Window1"
-        Title="Window1"
-		WindowStartupLocation="CenterScreen"
-		Closed="Window_Closed"
-		Background="Blue">
-	<Grid>
-		<SelectableTextBlock Text="Startup Window"/>
-		<Button Content="Word Book" Click="OpenBookButton"/>
-	</Grid>
+        x:Class="DataBaseTest.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="DataBaseTest">
+        <views:MainView />
 </Window>

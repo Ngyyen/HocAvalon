@@ -24,8 +24,7 @@ namespace HocAvalon.Views
             InitializeComponent();
             //httpClient = new HttpClient();
             //string input = ConvertString(ShareData.transText);
-            //transBox.Text = TranslateWord(input);
-            DataContext = new WordWindowViewModel();
+            //transBox.Text = TranslateWord(input); 
         }
  /*       public string TranslateWord(string input)
         {
@@ -109,5 +108,19 @@ namespace HocAvalon.Views
         {
             //this.Close();
         }
+
+/*        private void AddBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            WordWindowViewModel vm = this.DataContext as WordWindowViewModel;
+            if (vm.choseWord.Content == String.Empty)
+            {
+                button.Content = "Add";
+            }
+            else
+            {
+                button.Content = "Remove";
+            }
+        }*/
     }
 }

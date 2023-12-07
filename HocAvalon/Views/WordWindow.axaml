@@ -16,6 +16,9 @@
 			<TextBlock Text="{Binding Phonetic}"/>
 			<TextBlock Text="{Binding Sound}"/>
 			<Button Content="Audio" Command="{Binding AudioPlayCommand}"/>
+			<Button Content="{Binding ButtonContent}" Command="{Binding AddRemoveWordCommand}"
+					Background="{Binding ButtonColor}"/>
+
 			<ItemsControl ItemsSource="{Binding Definitions}">
 				<ItemsControl.Styles>
 					<Style Selector="TextBlock.class1">

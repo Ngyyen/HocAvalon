@@ -2,14 +2,13 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using HocAvalon.Services;
-using System.IO;
-using HocAvalon.ViewModels;
-using HocAvalon.Views;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using DataBaseTest.Services;
+using DataBaseTest.ViewModels;
+using DataBaseTest.Views;
 using System;
+using System.IO;
 
-namespace HocAvalon;
+namespace DataBaseTest;
 
 public partial class App : Application
 {
@@ -26,9 +25,9 @@ public partial class App : Application
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new Window1
+            desktop.MainWindow = new TaskWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new TaskViewModel()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
@@ -38,20 +37,21 @@ public partial class App : Application
                 DataContext = new MainViewModel()
             };
         }
+
         base.OnFrameworkInitializationCompleted();
     }
 
-    static WordBookService wordBookDatabase;
+    static TaskDatabaseService taskDatabase;
 
-    public static WordBookService WordBookDatabase
+    public static TaskDatabaseService TaskDatabase
     {
         get
         {
-            if (wordBookDatabase == null)
+            if (taskDatabase == null)
             {
-                wordBookDatabase = new WordBookService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WordBookDatabase.db3"));
+                taskDatabase = new TaskDatabaseService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WPFAppDb.db3"));
             }
-            return wordBookDatabase;
+            return taskDatabase;
         }
     }
 }

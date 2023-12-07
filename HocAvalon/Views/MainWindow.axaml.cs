@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using HocAvalon.ViewModels;
 using System.Threading.Tasks;
 
 namespace HocAvalon.Views;
@@ -16,6 +17,7 @@ public partial class MainWindow : Window
         if (numWord == 1)
         {
             WordWindow wordWindow = new WordWindow();
+            wordWindow.DataContext = new WordWindowViewModel();
             wordWindow.Show();
         }
         else
