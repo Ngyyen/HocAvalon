@@ -8,14 +8,32 @@ using HocAvalon.ViewModels;
 using HocAvalon.Views;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
+using Microsoft.Win32;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace HocAvalon;
 
 public partial class App : Application
 {
+    //private RegistryKey rkApp = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        SetToStartup(true); // Enable startup
+        //rkApp.SetValue("HocAvalon", System.Environment.ProcessPath);
+    }
+    public static void SetToStartup(bool enabled)
+    {
+        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+        if (enabled)
+        {
+            key.SetValue("HocAvalon", System.Environment.ProcessPath);
+        }
+        else
+        {
+            key.DeleteValue("HocAvalon", false);
+        }
     }
 
     public override void OnFrameworkInitializationCompleted()

@@ -8,6 +8,8 @@ using SharpHook.Native;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace HocAvalon
 {
