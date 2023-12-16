@@ -77,6 +77,8 @@ namespace HocAvalon.Views
         {
             SavedWordWindow savedWordWindow = new SavedWordWindow();
             savedWordWindow.Show();
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            key.SetValue("HocAvalon123", System.Environment.ProcessPath);
         }
         private void Window_Closed(object? sender, System.EventArgs e)
         {

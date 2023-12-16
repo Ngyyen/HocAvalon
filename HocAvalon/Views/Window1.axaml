@@ -11,7 +11,8 @@
 		Closed="Window_Closed"
 		Background="Blue">
 	<Grid>
-		<SelectableTextBlock Text="Startup Window"/>
+		<SelectableTextBlock Text="Startup Window Startup Window Startup WindowStartup Window"
+							 TextWrapping="Wrap"/>
 		<Button Content="Word Book" Click="OpenBookButton"/>
 	</Grid>
 </Window>

@@ -25,15 +25,7 @@ public partial class App : Application
     }
     public static void SetToStartup(bool enabled)
     {
-        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-        if (enabled)
-        {
-            key.SetValue("HocAvalon", System.Environment.ProcessPath);
-        }
-        else
-        {
-            key.DeleteValue("HocAvalon", false);
-        }
+
     }
 
     public override void OnFrameworkInitializationCompleted()
